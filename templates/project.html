@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body %}
+        <!-- Page Header-->
+        {% set fname = 'assets/img/'+ project.Img_file %}
+        <header class="masthead" style="background-image: url('{{ url_for('static', filename=fname) }}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="project-heading">
+                            <h1>{{project.Title}}</h1>
+                            <h2 class="subheading">{{project.Tagline}}</h2>
+                            <span class="meta">
+                                Posted by
+                                <a href="#!">{{params['blog_name']}}</a>
+                                {{ project.Date}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Project Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        {{ project.Content }}
+                    </div>
+                     <div class="text-center" style="margin-top: 20px">
+                        <a class="btn btn-secondary btn-lg" href="{{ project.Demo_link }}" target="_blank">See Demo</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+{% endblock %}

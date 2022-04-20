@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block body %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{ url_for('static',filename='assets/img/home-bg.jpeg') }}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h2>About Me</h2>
+                            <span class="subheading">Engineering Student</span>
+                            <span class="subheading">
+                                I am an energetic, hardworking and ambitious person with learning attitude and has a responsible approach to any task or situation that I am presented with; seeking work experiences and professional development opportunities.
+                                Being worked for different projects helped me to adopt to the changes quickly and made me a mature team worker.
+                                I am able to work well both in a team environment as well as using own initiative.
+                                I am able to work well under pressure and adhere to strict deadlines.
+                            </span>
+                            <h5>Have an interesting project?</h5>
+                            <a href="/contact" class="link-info">Let's Talk!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        {{params['about_text']}}
+                    </div>
+                </div>
+{#                 <!-- Divider-->#}
+                <hr class="my-4" />
+
+                <div class="page-heading text-center">
+                    <h2>My CV</h2>
+                </div>
+
+                <div class="text-center">
+                    <img src="{{ url_for('static',filename='assets/img/cv-bg.png') }}" class="blur rounded mx-auto d-block" alt="My CV">
+                    <a class="btn btn-secondary btn-lg" href="{{ url_for('static',filename='assets/cv/samrat_my_cv.pdf') }}" download rel="noopener noreferrer" target="_blank">Download</a>
+                </div>
+
+            </div>
+        </main>
+{% endblock %}

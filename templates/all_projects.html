@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{ url_for('static',filename='assets/img/all-project-bg.png') }}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1 style="text-align: center">All Projects</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Project preview-->
+                    {% for project in projects %}
+                        <div class="project-preview">
+                            <a href="/project/{{project.Slug}}">
+                                <h2 class="project-title">{{project.Title}}</h2>
+                                <h3 class="project-subtitle">{{project.Tagline}}</h3>
+                            </a>
+                            <p class="project-meta">
+                                Posted by
+                                <a href="#!">{{params['blog_name'] }}</a>
+                                {{project.Date }}
+                            </p>
+                        </div>
+                        {{project.Content[0:143]}}...
+                        <!-- Divider-->
+                        <hr class="my-4" />
+                    {% endfor %}
+
+{#                    <!-- Pager-->#}
+{#                    <div class='clearfix'>#}
+{#                        {% if number!=0 %}#}
+{#                        <a class="btn btn-secondary float-start" style="margin-bottom: 20px" href="/">&larr; Older Projects</a>#}
+{#                        <button type="button" class="btn btn-secondary float-start" style="margin-bottom: 15px" href="/">&larr; Older Projects</button>#}
+{#                        {% endif %}#}
+{#                        <a class="btn btn-secondary float-end" style="margin-bottom: 20px" href=""> Newer Projects &rarr;</a>#}
+{#                    </div>#}
+
+                </div>
+            </div>
+        </div>
+{% endblock %}

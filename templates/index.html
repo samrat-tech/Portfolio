@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block body %}
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('{{ url_for('static',filename='assets/img/home-bg.jpeg') }}')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 ">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h2> Hi, I am {{ params['blog_name'] }}</h2>
+                        <span class="subheading">Enthusiastic, responsible and hard working</span>
+                        <h5> Computer Engineer</h5>
+                        <a href="/about" class="link-info">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content-->
+
+    <div class="profile-area">
+        <div class="container">
+            <div class="row">
+                {% for project in projects %}
+                    {% set fname = 'assets/img/'+ project.Img_file %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="/project/{{project.Slug}}" class="card-block stretched-link text-decoration-none">
+                                <div class="img1"><img src="{{ url_for('static',filename=fname) }}" alt=""></div>
+                                <div class="main-text">
+                                    <h2 class="project-title">{{ project.Title[0:25] }}...</h2>
+                                    <h5 class="project-subtitle">{{ project.Tagline }}</h5>
+                                    <p>{{project.Content[0:143]}}...</p>
+{#                                    <p class="project-meta">#}
+{#                                    Posted by#}
+{#                                    <a href="#!">{{params['blog_name'] }}</a>#}
+{#                                    {{project.Date }}#}
+{#                                    </p>#}
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            <hr>
+                <!-- Pager-->
+                <div class='clearfix'>
+                    {% if number!=0 %}
+                    <a class="btn btn-secondary float-start" style="margin-top: 0.5px" href="{{ prev }}">&larr; Prev</a>
+                    {% endif %}
+                    <a class="btn btn-secondary float-end" style="margin-top: 0.5px" href="{{ next }}"> Next &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+

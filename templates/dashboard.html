@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block body %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{ url_for('static',filename='assets/img/admin-bg.jpg') }}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1 class="welcome-text">Admin Panel</h1>
+                            <span class="subheading welcome-text">Organize your projects</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <h2 class="text-center">Basic Actions</h2>
+                    <div class="form-row text-center clearfix">
+                        <a href="/edit/0"><button class="btn btn-secondary float-start">Add project</button></a>
+                        <a href="/logout"><button class="btn btn-secondary float-end">Log out</button></a>
+                    </div>
+                    <hr>
+{#                    <h2>Upload File</h2>#}
+{#                    <form action="/uploader" method="post" enctype="multipart/form-data">#}
+{#                        <input type="file" name="file1">#}
+{#                        <button type="submit" class="btn btn-secondary ">Submit</button>#}
+{#                    </form>#}
+{#                    <hr>#}
+                    <h2 class="text-center">Projects Table</h2>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">SN</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Edit</th>
+                          <th scope="col">Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for project in projects %}
+                            <tr>
+                              <td>{{ project.SN }}</td>
+                              <td>{{ project.Title }}</td>
+                              <td>{{ project.Date }}</td>
+                              <td><a href="/edit/{{ project.SN }}"><button class="btn btn-secondary btn-sm">Edit</button></a></td>
+                              <td><a href="/delete/{{ project.SN }}"><button class="btn btn-secondary btn-sm">Delete</button></a></td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+
+{#                    <!-- Pager-->#}
+{#                    <div class='clearfix'>#}
+{#                        {% if number!=0 %}#}
+{#                        <a class="btn btn-secondary float-start" style="margin-bottom: 20px" href="/">&larr; Older Projects</a>#}
+{#                        <button type="button" class="btn btn-secondary float-start" style="margin-bottom: 15px" href="/">&larr; Older Projects</button>#}
+{#                        {% endif %}#}
+{#                        <a class="btn btn-secondary float-end" style="margin-bottom: 20px" href=""> Newer Projects &rarr;</a>#}
+{#                    </div>#}
+                </div>
+            </div>
+        </div>
+{% endblock %}
